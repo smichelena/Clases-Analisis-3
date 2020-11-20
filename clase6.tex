@@ -1,0 +1,104 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+%paquetes de matematica
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%comandos de secciones 
+\newcommand{\teorema}{\section{Teorema}}
+\newcommand{\definicion}{\section{Definicion}}
+\newcommand{\ejercicios}{\section{Ejercicios}}
+
+%comandos varios utiles (agregar es posible)
+\newcommand{\Rn}[1]{\mathbb{R}^{#1}}
+\newcommand{\vect}[1]{\textbf{#1}}
+\newcommand{\vecti}[2]{\textbf{#1}_{#2}}
+\newcommand{\bola}[2]{\mathcal{B}_{#1}(#2)}
+\newcommand{\parcial}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Clase \# 6 de Análisis 3}
+\author{Equipo clases a \LaTeX}
+
+\begin{document}
+	
+	\maketitle
+	
+	\tableofcontents
+	
+	\section{Notación}
+	
+	Supongamos $f:S \subset \Rn{2} \rightarrow \Rn{}$
+	
+	$$ D_1(D_1 f)  = \dfrac{\partial^2 f}{\partial x^2} = f_{xx} = f_{11}
+	\hspace{1cm} D_1(D_2f) = \dfrac{\partial^2 f}{\partial x \partial y} = f_{yx} = f_{21}$$
+	
+	$$ D_2(D_2 f)  = \dfrac{\partial^2 f}{\partial y^2} = f_{yy} = f_{22}
+	\hspace{1cm} D_2(D_1f) = \dfrac{\partial^2 f}{\partial y \partial x} = f_{xy} = f_{12}$$
+	
+	\teorema
+	
+	Sea $f:S \subset \Rn{2} \rightarrow \Rn{}$ $(x_0,y_0) \in S$. Supongamos que en una vecindad de $(x_0,y_0)$, existen y son continuas $f,f_1,f_2,f_{12}$. Entonces $f_{21}$ existe y ademas $f_{21}(x_0,y_0) = f_{12}(x_0,y_0)$
+	
+	\definicion
+	
+	\underline{Diferenciabilidad para campos escalares.}
+	
+	\bigskip
+	
+	$f:S \subset \Rn{n} \rightarrow \Rn{}$, $\vecti{x}{0}$ punto interior de S, $\bola{r}{\vecti{x}{0}} \subset S$ , $\vect{y} \in \Rn{n}$ tal que $||\vect{y}|| < r$ de manera que $\vecti{x}{0} + \textbf{y} \in \bola{\vecti{x}{0}}{r}$
+	
+	Entonces $f$ es diferenciable en $\vecti{x}{0}$ si existe una transformación lineal (en este caso un funcional lineal) $T_{\vecti{x}{0}}: \Rn{n} \rightarrow \Rn{}$ y una función escalar $E:\Rn{2n} \rightarrow \Rn{}$ tal que:
+	
+	\begin{equation}
+		f(\vecti{x}{0} + \textbf{y}) = f(\vecti{x}{0}) + T_{\vecti{x}{0}}(\textbf{y}) + ||\textbf{y}||E(\vecti{x}{0} , \textbf{y})
+	\end{equation}
+	
+	Siempre que $||\textbf{y}|| < r$, donde $E(\vecti{x}{0} , \textbf{y}) \rightarrow 0$ cuando $||\textbf{y}|| \rightarrow 0$
+	
+	\bigskip
+	
+	La \underline{transformación lineal} $T_{\vecti{x}{0}}$ se llama diferencial de $f$ en $\vecti{x}{0}$
+	
+	\bigskip 
+	
+	A (1) se le llama formula de Taylor de primer orden.
+	
+	\teorema
+	
+	Si $f$ es diferenciable en $\vecti{x}{0}$ con diferencial $T_{\vecti{x}{0}}$, entonces existe la derivada $D_{\textbf{y}}(\vecti{x}{0})$ para todo $\textbf{y} \in \Rn{n}$ y tenemos $T_{\vecti{x}{0}}(\textbf{y}) = D_{\textbf{y}}(\vecti{x}{0})$. Ademas si $\textbf{y} = (y_1,y_2,y_3,\dots,y_n)$ entonces:
+	
+	$$ D_{\textbf{y}}(\vecti{x}{0}) = \sum_{k=1}^{n}D_k f(\vecti{x}{0})y_k $$
+	
+	\definicion
+	
+	\underline{Gradiente de un campo escalar:}
+	
+	$$ \nabla f (\vecti{x}{0}) = \begin{bmatrix}
+		D_1 f (\vecti{x}{0}) \\
+		D_2 f (\vecti{x}{0}) \\
+		\vdots \\
+		D_n f (\vecti{x}{0})
+	\end{bmatrix} $$
+	
+	Al final, la formula de Taylor de primer orden queda:
+	
+	$$ f(\vecti{x}{0} + \textbf{y}) = f(\vecti{x}{0}) + \nabla f (\vecti{x}{0}) \textbf{y} + ||\textbf{y}||E(\vecti{x}{0} , \textbf{y}) $$
+	
+	\teorema
+	
+	Si $f$ es diferenciable en $\vecti{x}{0}$ entonces $f$ es continua en $\vecti{x}{0}$.
+	
+	\ejercicios
+	
+	\begin{enumerate}
+		\item \textit{Sea $f(x,y) = x^3y^2 + x^4 \sin (y) + \cos (xy)$, Determinar:}
+		
+		$$ a) f_2(x,y) \hspace{1cm} d) f_{122}(x,y) $$
+		$$ b) f_{21}(x,y) \hspace{1cm} e) f_{22}(x,y) $$
+		$$ c) f_{212}(x,y) \hspace{1cm} f) f_{222}(x,y)$$
+	\end{enumerate}
+	
+\end{document}
