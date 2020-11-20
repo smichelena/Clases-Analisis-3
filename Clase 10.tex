@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\let\conjugatet\overline
+
+%paquetes de matematica
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%comandos de secciones 
+\newcommand{\teorema}{\section{Teorema}}
+\newcommand{\definicion}{\section{Definicion}}
+\newcommand{\ejercicios}{\section{Ejercicios}}
+
+%comandos varios utiles (agregar es posible)
+\newcommand{\Rn}[1]{\mathbb{R}^{#1}}
+\newcommand{\vect}[1]{\textbf{#1}}
+\newcommand{\vecti}[2]{\textbf{#1}_{#2}}
+\newcommand{\bola}[2]{\mathcal{B}_{#1}(#2)}
+
+\title{Clase \# 10 de Análisis 3}
+\author{Equipo clases a \LaTeX}
+
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+	
+	
+	\teorema
+	 
+	Sea $\vec{f}: S\subset R^n\rightarrow R$, $S$ abierto un campo vectorial continuamente diferenciable y supongamos que el jacobiano $J(\vec{x}_0)=det[D\vec{f}	(\vec{x}_0)]\neq 0$ en un punto $\vec{x}_0\in S$. Entonces existe un entorno $\bola{r}{\vec{x}_0}$ en el que $\vec{f}$ es uno a uno.
+	
+	\teorema 
+	Sea $\vec{f}=(f_1,f_2,...,f_n)$ tal que $f_i=S\subset \mathbb{R}^n\rightarrow \mathbb{R}, S$ abierto, $f_i$ con derivadas parciales continuas en $S$. Sea $T=\vec{f}(S)$ y supongamos que el jacobiano de $\vec{f}$ evaluado en $\vec{x}_0\in S$ no se anula $J(\vec{x}_0)\neq 0$ Entonces existen: una función $\vec{g}$ determinada de forma única y dos conjuntos abiertos $H\subset S$ y $V \subset F$ tales que:
+	\begin{enumerate}
+	\item ${\vec{x}_0}\in H$, $\vec{f}(\vec{x}_0)\in V$
+	\item $V=f(H)$
+	\item $\vec{f}$ es uno a uno en $H$
+	\item $\vec{g}$ está definida en $V$, $g(V)=H$ y, además,  $\vec{g}(\vec{f}(\vec{x}_0))=\vec{x},\quad \forall \vec{x}\in H$
+	\item $\vec{g}$ es continuamente diferenciable en $V$
+	\end{enumerate}
+	\teorema
+	Sean $K$ una esfera abierta en $\mathbb{R}^n$ con centro en $\vec{x}_0$ y $\conjugatet{K}$ su correspondiente esfera cerrada. Sea $\vec{f}=(f_1,...,f_n)$ una función vectorial $\vec{f}: K: \mathbb{R}^n\rightarrow \mathbb{R}^n$ y supongamos que $D_jf_i(\vec{x})$ existen si $\vec{x}\in K$. Supongamos también que $\vec{f}$ es uno a uno en $\conjugatet{K}$ y que el jacobiano $J_{\vec{f}}(\vec{x}_0)\neq 0$ en $K$. Entonces $f(K)$ contiene  un entorno del punto $\vec{f}(\vec{x}_0)$.
+	\teorema
+	Sea $\vec{f}$ una función vectorial continua en un entorno conjunto compacto  $S$ de $\mathbb{R}^m$ y supongamos $\vec{f}(S)\subset \mathbb{R}^n$. Supongamos, además que $\vec{f}$ es uno a uno en $S$. En estas condiciones, $f^{-1}$ es contínua en $\vec{f}(S)$.
+	\teorema
+	Sea $\vec{f}$ una función continua  en un conjunto compacto $S$ de $\mathbb{R}^m$ y supongamos que $\vec{f}(S)\subset\mathbb{R}^k$. Entonces $\vec{f}(S)$ es un conjunto compacto	.
+	\teorema
+	Sea $\vec{f}=(f_1, ...,f_n)$ una función vectorial definida en un conjunto abierto  $S$ de $\mathbb{R}^{n+k}$ cuyos valores pertenecen  a $\mathbb{R}^n$. ($\vec{f}:S\subseteq \mathbb{R}^{n+k}\rightarrow \mathbb{R}^n$).\\
+	
+	Supongamos que $\vec{f}$ es continuamente diferenciable en $S$. Sea $(\vec{x}_0, \vec{t}_0)\in S$ tal que $\vec{f}(\vec{x}_0, \vec{t}_0)=0$. Supongamos que $det[D_jf_i(\vec{x}_0, \vec{t}_0)]\neq 0$. Entonces existe un entorno $k-$dimencional $T_\bullet$ de $\vec{t}_0$ y una y solo una función vectorial $\vec{g}: T_\bullet \subset\mathbb{R}^k\mathbb{R}^n$, tal que
+	\begin{enumerate}
+	\item $\vec{g}$ es continuamente diferenciable en $T_\bullet$
+	\item $\vec{g}(\vec{t}_0)=\vec{x}_0$
+	\item $\vec{f}(\vec{g}(\vec{t}_0), \vec{t})=0$, $\forall \vec{t}\in T_\bullet$
+	\end{enumerate}
+	
+\end{document}
