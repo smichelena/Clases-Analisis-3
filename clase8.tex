@@ -1,0 +1,237 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+%paquetes de matematica
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%comandos de secciones 
+\newcommand{\teorema}{\section{Teorema}}
+\newcommand{\definicion}{\section{Definicion}}
+\newcommand{\ejercicios}{\section{Ejercicios}}
+
+%comandos varios utiles (agregar es posible)
+\newcommand{\Rn}[1]{\mathbb{R}^{#1}}
+\newcommand{\vecti}[2]{\textbf{#1}_{#2}}
+\newcommand{\bola}[2]{\mathcal{B}_{#1}(#2)}
+\newcommand{\xo}{\vecti{x}{0}}
+\newcommand{\y}{\textbf{y}}
+\newcommand{\f}{\textbf{f}}
+\newcommand{\g}{\textbf{g}}
+\newcommand{\h}{\textbf{h}}
+\newcommand{\fd}{\textbf{f'}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tends}{\rightarrow}
+\newcommand{\parcial}[2]{\dfrac{\partial #1}{\partial #2}}
+
+
+\title{Clase \# 8 de Análisis 3}
+\author{Equipo clases a \LaTeX}
+
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+	
+	\definicion
+	
+	\underline{Diferenciales para campos vectoriales:}
+	
+	\bigskip
+	
+	Sea $\textbf{f}:S \subset \Rn{n} \rightarrow \Rn{m}$ , $S$ abierto, $\vecti{x}{0} \in S$ , $\textbf{y} \in \Rn{n}$. Entonces se le llama a:
+	
+	$$ \textbf{f'}(\vecti{x}{0} , \textbf{y}) = \lim_{h \rightarrow 0} \dfrac{\textbf{f}(\vecti{x}{0}+ h\textbf{y}) - \textbf{f}(\vecti{x}{0})}{h} \hspace{1cm} \text{(Si el limite existe)}$$
+	
+	Derivada de $\textbf{f}$ en $\vecti{x}{0}$ respecto a $\textbf{y}$. \fbox{Atención: $\textbf{f'}(\vecti{x}{0} , \textbf{y})\in \Rn{n}$ }
+	
+	\section*{Observación:}
+	
+	Notemos que: 
+	
+	$$ \textbf{f} = \begin{bmatrix}
+		f_1 \\
+		f_2 \\
+		\vdots \\
+		f_n
+	\end{bmatrix} $$
+	
+	Con $f_i:\Rn{n} \rightarrow \Rn{}$, en consecuencia:
+	
+	$$ \textbf{f'}(\textbf{y} , \vecti{x}{0}) = \begin{bmatrix}
+		f_1' (\vecti{x}{0} , \textbf{y}) \\
+		f_2' (\vecti{x}{0} , \textbf{y}) \\
+		\vdots \\
+		f_n' (\vecti{x}{0} , \textbf{y})
+	\end{bmatrix}  $$
+	
+	En otras palabras, Trabajando con los \underline{campos escalares componentes}, se deducen las propiedades para el case de los campos vectoriales.
+	
+	\definicion
+	
+	$\textbf{f}$ es diferenciable en $\xo$ si existe transformacion lineal $T_{\xo}:\Rn{n} \tends \Rn{m}$ tal que:
+	
+	$$ \f (\xo + \textbf{w}) = \f (\xo) + T_{\xo} (\textbf{w}) + ||\textbf{w}||E(\xo,\textbf{w})$$
+	
+	Donde $E(\xo,\textbf{w}) \tends \textbf{0}$ cuando $\textbf{w} \tends \textbf{0}$
+	
+	Se dira que $T_{\xo}$ es la diferencial de $\f$ en $\xo$.
+	
+	\teorema
+	
+	Supongamos que $\f$ es diferenciable en $\xo$ con diferencial $T_{\xo}$, entonces existe la derivada $\fd(\xo,\y)$ para todo $\y \in \Rn{n}$ y se cumple que:
+	
+	$$ T_{\xo}(\y) = \fd(\xo,\y) $$
+	
+	Mas aun: si $\f = (f_1,\dots,f_n)$ con $f_i:S \subset \Rn{n} \tends \R$ y si $\y = (y_1,\dots,y_n)'$ entonces:
+	
+	$$ T_{\xo} (\y) = \begin{bmatrix}
+		\nabla f_1(\xo) \\ \nabla f_2 (\xo) \\ \vdots \\ \nabla f_n(\xo)
+	\end{bmatrix} \begin{bmatrix}
+		y_1 \\
+		y_2 \\
+		\vdots \\
+		y_n
+	\end{bmatrix} $$
+	
+	En forma matricial resulta $T_{\xo}(\y) = Df(\xo)\y$.
+	
+	$$ T_{\xo}(\y) = \begin{bmatrix}
+		D_1f_1(\xo) & D_2f_1(\xo) & \dots & D_nf_1(\xo) \\
+		D_1f_2(\xo) & D_2f_2(\xo) & \dots & D_nf_2(\xo) \\
+		\vdots & \vdots & \ddots & \vdots \\
+		D_1f_m(\xo) & D_1f_m(\xo) & \dots & D_nf_m(\xo)
+	\end{bmatrix} \begin{bmatrix}
+	y_1 \\
+	y_2 \\
+	\vdots \\
+	y_n
+	\end{bmatrix}$$
+
+	$$ = \underbrace{D\f (\xo)}_\text{Matriz Jacobiana}\y $$
+	
+	\teorema
+	
+	Si un campo vectorial $\f$ es diferenciable en $\xo$ entonces es continuo en $\xo$
+	
+	\teorema 
+	
+	\underline{Regla de la cadena}
+	
+	\bigskip
+	
+	Sean $\f:S \subset \Rn{n} \tends \Rn{m}$ y $\g:T \subset \Rn{p} \tends \Rn{n}$
+	
+	$S$ abierto en $\Rn{n}$, $T$ abierto en $\Rn{p}$, $\xo \in T$ , $\vecti{w}{0} = \g (\xo)$ , $\h = \f \circ \g$ definida en un entorno de $\xo$.
+	
+	Supongamos $\g$ diferenciable en $\xo$ con diferencial $\g'(\xo)$ y $\f$ diferenciable en $\vecti{w}{0}$. Con diferencial $\fd (\vecti{w}{0})$
+	
+	Entonces $\h$ es diferenciable en $\xo$ con diferencial:
+	
+	$$ \h' (\xo) = \fd (\vecti{w}{0}) \circ \g' (\xo)$$
+	
+	En notación matricial:
+	
+	$$ D \h (\xo) = \underbrace{D \f (\vecti{w}{0})}_\text{$n \times m$} \underbrace{D \g (\xo)}_\text{$p \times n$} $$
+	
+	Puesto la composición de transformaciones lineales corresponde al producto de sus matrices correspondientes.
+	
+	\subsection*{Notación alternativa}
+	
+	$$ \parcial{h}{s} = \parcial{f}{x} \parcial{x}{s} + \parcial{f}{y} \parcial{y}{s}$$
+	
+	$$ \parcial{h}{t} = \parcial{f}{x}\parcial{x}{t} + \parcial{f}{y}\parcial{y}{t}$$
+	
+	\definicion
+	
+	\underline{Derivación de funciones definidas implícitamente.}
+	
+	\bigskip
+	
+	Sea $F:T \subset \Rn{3} \tends \R$ con $F(x,y,z) = 0$ superficie de nivel.
+	
+	\bigskip
+	
+	Por ejemplo: $F(x,y,z) = x^2 + y^2 + z^2 - 1$ , entonces $F(x,y,z) = 0$ es $x^2 + y^2 +z^2 = 1$
+	
+	\bigskip
+	
+	En la ecuación $F(x,y,z)=0$ se podría despejar una variable en función de las otras, por ejemplo $z=f(x,y)$. Diremos que $F(x,y,z) = 0$ define de manera implícita a $z=f(x,y)$. Sin conocer implícitamente a $f(x,y)$, podemos deducir propiedades de $\parcial{f}{x}$ y $\parcial{f}{y}$ usando la regla de la cadena.
+	
+	Si existe la función $f$, dado que $F(x,y,z)=0$ entonces se debe cumplir que $F(x,y,f(x,y)) = 0$ con $(x,y) \in S$ , $S$ abierto en $\Rn{2}$.
+	Hagamos $g:S \subset \Rn{2} \tends \R$ , $g(x,y) = F(x,y,f(x,y))$. Entonces:
+	
+	$$ F(x,y,f(x,y)) = 0 \implies g(x,y) = 0 \hspace{2mm} \text{en $S$} $$
+	
+	Y por lo tanto $\parcial{g}{x} = 0$ ,$\parcial{g}{y} = 0$
+	
+	\bigskip
+	
+	Hagamos:
+	
+	$$ g(x,y) = F (u_1(x,y) , u_2(x,y) , u_3(x,y)) $$
+	
+	Donde $u_1(x,y) = x$ , $u_2(x,y) = y$ y $u_3(x,y) = f(x,y)$
+	
+	Entonces:
+	
+	$$ \parcial{g}{x} = D_1F \underbrace{\parcial{u_1}{x}}_\text{$=1$} + D_2F \underbrace{\parcial{u_2}{x}}_\text{$=0$} + D_3F \underbrace{\parcial{u_3}{x}}_\text{$=f_x$} $$
+	
+	$$ \parcial{g}{y} = D_1F \underbrace{\parcial{u_1}{y}}_\text{$=0$} + D_2F \underbrace{\parcial{u_2}{y}}_\text{$=1$} + D_3F \underbrace{\parcial{u_3}{y}}_\text{$=f_y$} $$
+	
+	$D_1F$ y $D_3F$ calculadas en $(x,y,f(x,y))$.
+	
+	\bigskip
+	
+	Entonces tendremos:
+	
+	$$ D_1F + D_3F \parcial{f}{x} = 0 
+	\implies \parcial{f}{x} = - \dfrac{D_1 F(x,y,f(x,y))}{D_3 F(x,y,f(x,y))} $$
+	
+	$$ D_2F + D_3F \parcial{f}{y} = 0n \implies \parcial{f}{y} = - \dfrac{D_2 F(x,y,f(x,y))}{D_3 F(x,y,f(x,y))} $$
+	
+	Valido en los puntos donde $D_3 F(x,y,f(x,y)) \neq 0$
+	
+	\bigskip
+	
+	También se escribe:
+	
+	$$ \parcial{f}{x} = - \dfrac{\partial f/\partial x}{\partial f/\partial z} \hspace{1cm} \parcial{f}{y} = - \dfrac{\partial f/\partial y}{\partial f/\partial z} $$
+	
+	\ejercicios
+	
+	\begin{enumerate}
+		\item \textit{Sea $f$ una función diferenciable de $(u,v,w)$ y sea $g$ una función de $(x,y)$ definida por:}
+		$$ g(x,y) = f(x-y,x+y,2x) $$
+		\textit{Calcular $g_x$ y $g_y$ en terminos de $f_u$, $f_v$ y $f_w$.}
+		
+		\item \textit{Las dos ecuaciones $2x = v^2 - u^2$ , $y=uv$ definen $u$ y $v$ como funciones de $(x,y)$. Hallar las formulas correspondientes a $\parcial{u}{x}$ , $\parcial{u}{y}$ , $\parcial{v}{x}$ , $\parcial{v}{y}$}
+		
+		\item \textit{Las tres ecuaciones:}
+		
+		$$ x^2 - y \cos (uv) + z^2 = 0 $$
+		
+		$$ x^2 + y^2 - \sin (uv) + 2z^2 = 2 $$
+		
+		$$ xy - \sin (u) \cos (v) + z = 0 $$
+		
+		\textit{Definen $x,y,z$ como funciones de $u$ y $v$.}
+		
+		\bigskip
+		
+		\textit{Calcular $\parcial{x}{u}$ y $\parcial{x}{v}$ en $x=y=1$ , $u = \pi/2$ , $v = z = 0$}
+		
+		\item \textit{La ecuación $f(y/x,z/x) = 0$ define $z$ implícitamente como función de $(x,y)$ , Supongamos que esa función es $z = g(x,y)$. Demuestre que:}
+		
+		$$ x \parcial{g}{x} + y \parcial{g}{y} = g(x,y) $$
+		
+		\item \textit{La ecuación $x + y + (y+z)^2 = 6$ define $z$ como función implícita de $(x,y)$. Calcular $\parcial{f}{x}$ , $\parcial{f}{y}$ y $\dfrac{\partial^2 f}{\partial x \partial y}$ en función de $x,y,z$.}
+		
+		
+		
+		
+	\end{enumerate}
+	
+\end{document}
