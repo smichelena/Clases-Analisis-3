@@ -1,0 +1,211 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+%paquetes de matematica
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[mathscr]{euscript}
+
+
+%comandos de secciones 
+\newcommand{\teorema}{\section{Teorema}}
+\newcommand{\definicion}{\section{Definición}}
+\newcommand{\ejercicios}{\section{Ejercicios}}
+\newcommand{\solucion}{\section{Solución}}
+\newcommand{\ejemplo}{\section{Ejemplo}}
+
+%comandos varios utiles (agregar es posible)
+\newcommand{\Rn}[1]{\mathbb{R}^{#1}}
+\newcommand{\vect}[1]{\textbf{#1}}
+\newcommand{\vecti}[2]{\textbf{#1}_{#2}}
+\newcommand{\bola}[2]{\mathcal{B}_{#1}(#2)}
+\newcommand{\parcial}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Clase \# 9 de Análisis 3}
+\author{Equipo clases a \LaTeX}
+
+\begin{document}
+	
+	\maketitle
+	
+	\definicion
+	
+	Sea $f \, : \, S \subset \Rn{n} \mapsto \Rn{}$ y $\vec{a} \in S$. Diremos que \underline{f tiene un máximo absoluto en $\vec{a}$} si \\
+	\begin{equation}
+	    f(\vec{x})  \leqslant f(\vec{a})
+	\end{equation} \\
+
+	Por otra parte, decimos que \underline{f tiene un máximo relativo en $\vec{a}$} si existe $B(\vec{a}, r) \subset S$ tal que $\vec{a}$ es un máximo absoluto en $B(\vec{a}, r)$. Llamamos a $f(\vec{a}) $ máximo relativo de f en S.
+	
+	\paragraph{Nota:} se deduce de manera análoga la definición de mínimo absoluto y mínimo relativo de f. Basta con hacer $ f(\vec{a}) \leqslant  f(\vec{x})$ en (1).
+	
+	\definicion
+	
+	Sea $f \, : \, S \subset \Rn{n} \mapsto \Rn{}$, $S$ abierto, $\vec{a} \in S$, y f diferenciable en $\vec{a}$. Si $\nabla f(\vec{a}) = \vec{0}$ entonces diremos que \underline{$\vec{a}$ es un punto estacionario de f}. \\
+	
+	Si para todo $B(\vec{a}, r)$ existen puntos $\vec{x}$ para los cuales $f(\vec{x}) < f(\vec{a}) $ y otros puntos $\vec{y}$ para los cuales $f(\vec{x}) > f(\vec{a})$ diremos que \underline{$\vec{a}$ es un punto de ensilladura.}
+	
+	\definicion
+	Sea $f \, : \, S \subset \Rn{n} \mapsto \Rn{}$, $S$ abierto, f con derivadas parciales de segundo orden \linebreak $D_{ij} f = D_i[ D_j f]$. Llamamos a $\mathscr{H}(\vec{x}) \, = \, [D_{ij} f(\vec{x})]_{i,j = 1} ^{n}$ \underline{matriz hessiana} de f en $\vec{x}$.
+	
+	\pagebreak
+	
+	\teorema
+	\underline{Fórmula de Taylor de segundo orden para campos escalares.} \\
+	
+	Sea $f \, : \, S \subset \Rn{n} \mapsto \Rn{}$, $S$ abierto, $\vec{a} \in S$, f con derivadas parciales segundas \underline{continuas} en $B(\vec{a}, r) \subset S$. Entonces para todo $\vec{y} \in \Rn{n}$ tal que $\vec{a} + \vec{y} \in B(\vec{a}, r)$ se cumple que:
+	
+	$$ f(\vec{a} + \vec{y}) \, = \, f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{y} + \dfrac{1}{2!} \vec{y} \,  \mathscr{H}(\vec{a})\, \vec{y} \, ^{t} + || \vec{y} || E_{2}(\vec{a}, \vec{y})$$
+	
+	donde $E_{2}(\vec{a}, \vec{y}) \rightarrow 0$ cuando $\vec{y} \rightarrow 0$.
+	
+	\paragraph{Nota:} recordemos que $\vec{y} \, \mathscr{H}(\vec{a})\,\vec{y} \, ^{t}$ es una forma cuadrática
+	
+	
+	\definicion
+	
+	\underline{Definición de valores característicos y vectores característicos} \\
+	
+	Sea $ A \in M_{n \times n} (\mathbb{R}).$ Si $\lambda \in \mathbb{C}$ y $v \in \mathbb{C}^{n}  \setminus \{ \textbf{0} \}$ satisface 
+	
+	\begin{equation}
+	    A v = \lambda v
+    \end{equation}
+    
+    entonces $\lambda$ se denomina $\textbf{valor característico}$ de $A$ y el vector v se denomina $\textbf{vector característico}$ de $A$ correspondiente a $\lambda$.
+    
+    \paragraph{Nota:} Los valores y vectores característicos también se denominan autovalores y autovectores o eigenvalores y eigenvectores.
+    
+    \pagebreak
+    
+    \ejemplo
+    
+    Sea la matriz $A \, = \, 
+    \begin{pmatrix}
+            3 & 2 \\
+            -5 & 1 \\
+            \end{pmatrix} $ y el vector $\vec{v}_{1} \, = \, \begin{pmatrix}
+            1 \, + \, 3i \\
+            -5  \\
+        \end{pmatrix} $, entonces
+    \begin{eqnarray*}
+    A \vec{v}_{1} & = & \begin{pmatrix}
+            3 & 2 \\
+            -5 & 1 \\
+            \end{pmatrix} \begin{pmatrix}
+            1 \, + \, 3i \\
+            -5  \\
+            \end{pmatrix} \\[0.2 cm]
+    & = & \begin{pmatrix}
+            -7 \, + \, 9i \\
+            -10 \, - \, 15i\\
+            \end{pmatrix} \\[0.2 cm]
+    & = & (2 \, + \, 3i) \begin{pmatrix}
+            1 \, + \, 3i \\
+            -5  \\
+            \end{pmatrix}
+    \end{eqnarray*}
+    
+En virtud de la definición anterior, tenemos que $\lambda _{1} = 2 \, + \, 3i $ es un valor característico de $A$ y $\vec{v}_{1}$ es un vector característico de $A$ correspondiente a $\lambda _{1} .$ 
+
+De manera analoga, si $\vec{v}_{2} \, = \, \begin{pmatrix}
+            1 \, -\, 3i \\
+            -5  \\
+            \end{pmatrix} $, entonces 
+            
+\begin{eqnarray*}
+A \vec{v}_{2}& = & \begin{pmatrix}
+            3 & 2 \\
+            -5 & 1 \\
+            \end{pmatrix} \begin{pmatrix}
+            1 \, - \, 3i \\
+            -5  \\
+            \end{pmatrix} \\[0.2 cm]
+& = & \begin{pmatrix}
+            -7 \, - \, 9i \\
+            -10 \, + \, 15i\\
+            \end{pmatrix} \\[0.2 cm]
+& = & (2 \, - \, 3i) \begin{pmatrix}
+            1 \, - \, 3i \\
+            -5  \\
+            \end{pmatrix}
+\end{eqnarray*}
+
+Por lo que $\lambda _{2} = 2 \, - \, 3i $ también es un valor característico de $A$ y $\vec{v}_{2} = \begin{pmatrix}
+            1 \, - \, 3i \\
+            -5  \\
+            \end{pmatrix}$ es un vector característico de $A$ correspondiente a  $\lambda_{2}.$
+	
+    
+    \definicion
+    
+    Sea $ A \in M_{n \times n} (\mathbb{R})$ y $\mathscr{I} $ la matriz identidad $n \times n$, decimos que 
+
+    \begin{equation}
+        p(\lambda) = det| A \, - \, \lambda \mathscr{I}|
+    \end{equation}
+    es el $\textbf{polinomio característico}$ de la matriz $A$. \\ 
+    
+    La ecuación (3) se denomina $\textbf{ecuación característica}$ de $A$.
+    
+    \pagebreak
+    
+    \ejemplo
+    
+    Consideremos nuevamente la matriz $A \, = \, \begin{pmatrix}
+            3 & 2 \\
+            -5 & 1 \\
+            \end{pmatrix} $ y el polinomio característico de $A$. Entonces 
+            
+    \begin{eqnarray*}
+        p(\lambda) & = & det  \begin{pmatrix}
+            3 - \lambda & 2 \\
+            -5 & 1 -\lambda \\
+            \end{pmatrix}  \\[0.2 cm]
+                & = & \lambda ^{2} -4 \lambda +13
+    \end{eqnarray*}
+
+Ahora si $p(\lambda) = 0$ entonces $\lambda ^{2} -4 \lambda +13 = 0$, lo que implica que $\lambda = 2 \pm 3i$. Por tanto, $\lambda_{1} = 2 + 3i$ y $\lambda_{2} = 2 - 3i$ son valores característicos de la matriz $A$.
+	
+	\teorema
+	Sea $A \, = [a_{ij}]$ una matriz simétrica $n \times n$ consideremos 
+	
+	$$ Q(\vec{y}) \, = \, \vec{y} A \vec{y} \, ^{t} \, = \, \sum _{i = 1} ^{n} \sum _{j = 1} ^{n} a_{ij} y_{i} y_{j}$$
+	
+	Entonces:
+	
+	\begin{enumerate}
+	    \item $Q(\vec{a}) > 0$ para todo $ \vec{y} \neq 0$ si y solo si todos los autovalores de A son positivos.
+	    
+	    \item  $Q(\vec{a}) < 0$ para todo $ \vec{y} \neq 0$ si y solo si todos los autovalores de A son negativos.
+	\end{enumerate}
+	
+	
+	\teorema
+
+	Sea $f \, : \, S \subset \Rn{n} \mapsto \Rn{}$, $S$ abierto, $\vec{a} \in S$ tal que $\nabla f(\vec{a}) = \vec{0}$, f con derivadas parciales segundas \underline{continuas} en $B(\vec{a}, r) \subset S$, $\mathscr{H} (\vec{a})$ la matriz hessiana de f en $\vec{a}.$ Entonces:
+	
+	\begin{enumerate}
+	    \item Si todos los autovalores de $\mathscr{H} (\vec{a})$ son positivos, f tiene un mínimo relativo en $\vec{a}$.
+	    
+	    \item Si todos los autovalores de $\mathscr{H} (\vec{a})$ son negativos, f tiene un máximo relativo en $\vec{a}$.
+	    
+	    \item Si $\mathscr{H} (\vec{a})$ tiene autovalores positivos y negativos, entonces f tiene un punto ensilladura en $\vec{a}$.
+	    
+	\end{enumerate}
+	
+	
+	
+	
+	
+
+	
+    
+    
+    
+	
+	
+
+\end{document}
