@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+%paquetes de matematica
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[mathscr]{euscript}
+
+
+%comandos de secciones 
+\newcommand{\teorema}{\section{Teorema}}
+\newcommand{\definicion}{\section{Definición}}
+\newcommand{\ejercicios}{\section{Ejercicios}}
+\newcommand{\solucion}{\section{Solución}}
+
+%comandos varios utiles (agregar es posible)
+\newcommand{\Rn}[1]{\mathbb{R}^{#1}}
+\newcommand{\vect}[1]{\textbf{#1}}
+\newcommand{\vecti}[2]{\textbf{#1}_{#2}}
+\newcommand{\bola}[2]{\mathcal{B}_{#1}(#2)}
+\newcommand{\parcial}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Ejercicios propuestos}
+\author{Equipo clases a \LaTeX}
+
+\begin{document}
+\maketitle
+
+\ejercicios
+    \begin{enumerate}
+        \item \textit{Encuentre y clasifique los puntos críticos de las siguientes funciones:}
+        
+        \begin{enumerate}
+            \item $f(x,y) = x^{3} + 12xy + y^{2} + 6$
+            
+            \item $f(x,y) = x^{2} + xy + y^{2} + \dfrac{2y}{x} + \dfrac{2y}{y}$
+            
+            \item $f(x,y) = y^{4} + x^{2} - 2xy$
+            
+        \end{enumerate}
+        
+        \item \textit{Encuentre los valores extremos absolutos de las siguientes funciones:}
+        
+        \begin{enumerate}
+            \item $f(x,y) = x^{2} + y^{2} - 2y \;$ sobre  $\; \mathscr{R} = \{(x,y) \in \Rn{2} \, : \, x^{2} + 2x + y^{2} \leqslant 3 \}$.\\
+            
+            \item $f(x,y) = \sqrt{(6-x)(6-y)(x+y - 6)} \;$ sobre el triángulo limitado por \linebreak $x = 6, y = 6, x + y = 6$.
+        \end{enumerate}
+        
+        \item \textit{Sea f una función diferenciable de (v,u) y sea g una función de (x,y) definida por $g(x,y) = f(x^{2} - y^{2}, 2xy)$. Calcular $g_x$ y $g_y$ en términos de $f_u$ y $f_v$.}
+        
+        
+    \end{enumerate}
+
+
+
+\end{document}
