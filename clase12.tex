@@ -1,0 +1,203 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+%paquetes de matematica
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%comandos de secciones 
+\newcommand{\teorema}[1]{\section{Teorema: #1}}
+\newcommand{\definicion}[1]{\section{Definicion: #1}}
+\newcommand{\ejercicios}{\section{Ejercicios}}
+
+%comandos varios utiles (agregar es posible)
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+\newcommand{\vect}[1]{\textbf{#1}}
+\newcommand{\vecti}[2]{\textbf{#1}_{#2}}
+\newcommand{\bola}[2]{\mathcal{B}_{#1}(#2)}
+
+\usepackage{accents}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Clase \# n de Análisis 3}
+\author{Equipo clases a \LaTeX}
+
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+	
+	\definicion{Particiones de rectángulos y funciones escalonadas} 
+	
+	\subsection{Particiones}
+	
+	$$ Q [a,b]\times[c,d] \subset \R{3} $$
+	
+	Sea $P_1$ una partición de $[a,b]$, es decir: $P_1 : a=x_0<x_1<\dots<x_n=b$
+	
+	Sea $P_2$ una partición de $[c,d]$, es decir: $P_2 : c=y_0<y_1<\dots<y_m=d$
+	
+	También se escribe $P_1 = \{x_0,\dots,x_n\}$ y $P_2=\{ y_0,\dots,y_m \}$
+	
+	Diremos que $P = P_1\times P_2$ (Producto cartesiano) es una partición de $Q$.
+	
+	$P'$ se llama refinamiento de $P$ si $P\subseteq P'$.
+	
+	\subsection{Función escalonada}
+	
+	Una función definida en un rectángulo $Q$ se llama escalonada si existe una partición $P$ de $Q$ tal que $f$ es constante en cada uno de los rectángulos abiertos de $P$ (Conviene introducir función indicatriz)
+	
+	\definicion{Integral doble de una función escalonada}
+	
+	Sea $f$ una funcion escalonada que toma el valor constante $c_{ij}$ en el sub-rectángulo abierto $(x_i,\dots,x_i)\times(y_j,\dots,y_j)$ de un rectangulo $Q$. Se define la integral doble de $f$ en $Q$ como:
+	
+	\begin{equation}
+		\iint\limits_Q f = \sum_{i=1}^{n} \sum_{j=1}^{m} c_{ij}(x_i-x_{i-1})(y_j-y_{j-1})
+	\end{equation} 
+	 
+	\underline{Notación:} $\Delta x_i = x_i - x_{i-1}$ y  $\Delta y_j = y_j - y_{j-1}$
+	
+	Se escribe:
+	
+	\begin{equation}
+		\sum_{i=1}^{n} \sum_{j=1}^{m} c_{ij}\Delta x_i \Delta y_j = \iint\limits_Q f(x,y)dxdy
+	\end{equation}
+	
+	\subsection*{Nota:}
+	
+	En lo que sigue, $s(x,y)$ y $t(x,y)$ son funciones escalonadas definidas en un rectángulo $Q$.
+	
+	\teorema{Linealidad}
+	
+	Para todo $c_1,c_2 \in \R{}:$
+	
+	\begin{equation}
+		\iint\limits_Q [c_1 s(x,y) + c_2 t(x,y)]dxdy = c_1 \iint\limits_Q s(x,y)dxdy + c_2 \iint\limits_Q t(x,y)dxdy
+	\end{equation}
+	
+	\teorema{Subdivisión de intervalos}
+	
+	Si $Q$ esta dividido en dos sub-rectángulos $Q_1$ y $Q_2$:
+	
+	\begin{equation}
+		\iint\limits_Q s(x,y)dxdy = \iint\limits_Q s(x,y)dxdy + \iint\limits_Q s(x,y)dxdy
+	\end{equation}
+
+	\teorema{Desigualdad de integrales}
+	
+	Si $s(x,y) \leq t(x,y)$ para todo $(x,y) \in Q$:
+	
+	\begin{equation}
+		\iint\limits_Q s(x,y)dxdy \leq \iint\limits_Q t(x,y)dxdy
+	\end{equation}
+	
+	\definicion{Integrabilidad en regiones rectangulares}
+	
+	Sea $Q$ un rectángulo en $\R{2}$ y sea $f:\R{2} \rightarrow \R{}$ tal que $|f(x,y)| < M$ si $(x,y) \in Q$
+	
+	Entonces si existe un unico numero $I$ tal que:
+	
+	\begin{equation}
+		\iint\limits_Q s \leq I \leq \iint\limits_Q t
+	\end{equation}
+	
+	Para todo par de funciones escalonadas que satisfacen:
+	
+	\begin{equation}
+		s(x,y) \leq f(x,y) \leq t(x,y) \text{ Para todo } (x,y) \in Q
+	\end{equation}
+	
+	Diremos que $f$ es integrable en $Q$ y su integral doble sobre $Q$ es $I$.
+	
+	\definicion{Integrales superiores e inferiores}
+	
+	Sean:
+	
+	$$ S = \left\{ \iint\limits_Q s : \text{ $s$ es funcion escalonada en $Q$, } s(x,y) \leq f(x,y) \text{ en $Q$} \right\} $$
+	
+	$$ T = \left\{ \iint\limits_Q t : \text{ $t$ es funcion escalonada en $Q$, } f(x,y) \leq s(x,y) \text{ en $Q$} \right\} $$
+	
+	Diremos que la integral inferior de $S$ en $Q$ es $\ubar{I}(f) = \sup S$
+	
+	Diremos que la integral superior de $S$ en $Q$ es $\bar{I}(f) = \inf T$
+	
+	\teorema{Condición para Integrabilidad}
+	
+	Si una función $fz$ acotada en un rectángulo $Q$ tiene una integral inferior $\ubar{I}(f)$ y una integral superior $\bar{I}(f)$ que satisfacen:
+	
+	\begin{equation}
+		\iint\limits_Q s \leq \ubar{I}(f) \leq \bar{I}(f) \leq \iint\limits_Q f
+	\end{equation}
+	
+	Para todas las funciones escalonadas en $Q$, $s$ y $t$ que cumplan $s(x,y) \leq f(x,y) \leq t(x,y)$ para todo $(x,y) \in Q$ entonces $f$ es integrable en $Q$ si y solo si $\ubar{I}(f) = \bar{I}(f)$ en cuyo caso:
+	
+	\begin{equation}
+		\iint\limits_Q f = \ubar{I}(f) = \bar{I}(f)
+	\end{equation}
+	
+	\teorema{Computo de integrales dobles sobre regiones rectangulares}
+	
+	Sea $Q = [a,b]\times[c,d]$ , $f:Q \rightarrow \R{}$, acotada y supongamos que $f$ es integrable en $Q$. Supongamos también que para cada $y$ \underline{fija} en $[c,d]$ la integral $\int_{a}^{b}f(x,y)dx$ existe y escribamos $A(y) = \int_{a}^{b} f(x,y)dx$.
+	Si existe la integral $\int_{a}^{b}A(y)dy$, entonces sera igual a $\iint\limits_Q f$.
+	
+	\bigskip
+	
+	Atención: entonces tendremos la formula:
+	
+	\begin{equation}
+		\iint\limits_Q f(x,y)dxdy = \int_{c}^{d} \left[ \int_{a}^{b} f(x,y)dx \right]dy
+	\end{equation}
+	
+	que aplica bajo ciertas condiciones.
+	
+	\teorema{Fubini}
+	
+	Sea $Q = [a,b]\times[c,d]$ , $f:Q \rightarrow \R{}$, Si $f$ es continua en $Q$ entonces $f$ es integrable en $Q$. Ademas se cumple:
+	
+	\begin{equation}
+		\iint\limits_Q f(x,y)dxdy = \int_{c}^{d} \left[ \int_{a}^{b} f(x,y)dx \right]dy = \int_{a}^{b} \left[ \int_{c}^{d} f(x,y)dy \right]dx
+	\end{equation}
+	
+	\definicion{Conjunto de contenido nulo}
+	
+	Sea $A$ un conjunto acotado del plano. Se dice que el conjunto $A$ tiene contenido nulo, si para todo $\epsilon > 0$ existe un conjunto finito de rectángulos cuya unión contiene el conjunto $A$ y cuya suma de áreas no supera $\epsilon$
+	
+	\teorema{Condición de Integrabilidad para funciones con discontinuidades}
+	
+	Sea $Q = [a,b]\times[c,d]$ , $f:Q \rightarrow \R{}$ , $f$ acotada en $Q$. Si el conjunto de discontinuidades de $f$ en $Q$, es un conjunto de contenido nulo, entonces existe $\iint\limits_Q f$
+	
+	\ejercicios
+	
+	\begin{enumerate}
+		\item \textit{Demuestre que el conjunto de funciones escalonadas definidas en un rectángulo $Q$ es un espacio lineal}
+		\item \textit{Demostrar que el valor de (1) no depende de la elección de la partición $P$}
+		\item \textit{Sea $f:[0,1]\times[0,1] \rightarrow \R{}$ con:}
+		
+		$$ f(x,y) = \begin{cases}
+			1 & x=y \\
+			0 & x \neq y
+		\end{cases} $$
+	
+		\textit{Demuestre la existencia de la integral doble $\iint\limits_Q f$ y que su valor es cero.}
+		
+		\item \textit{Sea $f:[1,2]\times[2,4] \rightarrow \R{}$ con:}
+		
+		$$ f(x,y) = \begin{cases}
+			(x+y)^{-2} & x \leq y \leq 2x \\
+			0 & \text{otro caso}
+		\end{cases} $$
+	
+		\textit{Suponiendo la existencia de $\iint\limits_Q f$ calcule su valor.}
+		
+		\item \textit{Calcular las siguientes integrales, suponiendo su existencia:}
+		
+		\begin{enumerate}
+			\item $\iint\limits_Q |\cos (x+y)|dxdy$ con $Q = [0,\pi]\times[0,\pi]$
+			\item $\iint\limits_Q f(x,y) dxdy$ con $Q = [0,2]\times[0,2]$ y $f(t) = $ mayor entero $\leq t$
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{document}
